@@ -78,8 +78,9 @@
 
           }
           else{
-            return $res;}
+            return $res;
           }
+        }
 
 
 
@@ -128,10 +129,25 @@
           $res=$sth->fetchAll(PDO::FETCH_CLASS,'race', array('id','nom'));
           if ($res[0]->id==NULL){
             throw new \Exception("pas dans la liste", 1);
-
           }
           else{
             return $res[0];
+          }
+
+        }
+
+
+        // Acces à une catégorie
+        // Retourne un objet de la classe Categorie connaissant son identifiant
+        function getElemRace($id) {
+          $req="SELECT * FROM poule p,(SELECT * FROM race WHERE id=$id) a WHERE a.id=p.race ";
+          $sth = $this->db->query($req);
+          $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
+          if ($res[0]->id==NULL){
+            throw new \Exception("pas dans la liste", 1);
+          }
+          else{
+            return $res;
           }
 
         }
