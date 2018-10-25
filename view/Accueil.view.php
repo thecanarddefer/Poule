@@ -9,23 +9,17 @@
 
 <body>
 <header>
-  <table>
-    <tr>
-      <td> <a href="?"> <img src="../view/image/logo.png"/> </a> </td>
-      <td> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
-      <td> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
-      <td> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
-      <td> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
-      <td> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
-      <td> <a href="../view/Panier.view.php"> <img src="../view/image/panier.jpg" height = 100 width = 100/> </a> </td>
-      <td> <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> </td>
-      <td> <a href="?"> <img src="" alt="Nos catégories"/> </a> </td>
-    </tr>
-  </table>
+<a href="?"><p><img src="../view/image/logo.png"/></p></a>
 </header>
+
+
+
 
     <nav>
 
+
+    <a href="?ref=<?=$prev[0]->ref?>">&lt; </a>
+    <a href="?ref=<?=$next->ref?>">></a>
     </nav>
     <?php foreach ($articles as $key => $value) {?>
       <article >
@@ -38,16 +32,15 @@
       </article>
 
     <?php } ?>
+  <div class="catégories">
+    <a href="?ref=1&cat=7">
+      <p>poule race 7</p>
+    </a>
+  </div>
 
-    <table cellpadding = 10 >
-      <tr>
-        <td> <a  href="?ref=<?=$prev[0]->ref?>"> <img src="../view/image/fleche_gauche.png"> </a> </td>
-        <td> <a href="?ref=<?=$next->ref?>"> <img src="../view/image/fleche_droite.png"> </a> </td>
-      </tr>
-    </table>
 
 <footer>
-</p>Site fictif, issu de données réelles du Web</p>
+</p>Site fictif, issus de données réelles du Web</p>
 </footer>
 </body>
 </html>
