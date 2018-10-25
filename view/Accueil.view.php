@@ -1,10 +1,9 @@
 
 <html>
 <head>
-<title>Bricomachin</title>
+<title>Jolies Poules</title>
 <meta charset="UTF-8"/>
 <meta http-equiv="content-type" content="text/html;" />
-<meta name="author" content="Jean-Pierre Chevallet" />
 <link rel="stylesheet" type="text/css" href="../view/design/style.css"
 </head>
 
@@ -26,7 +25,9 @@
       <article >
         <h2><?=$value->nom?></h2>
         <h3>race : <?php require_once("../model/DAO.class.php"); print($dao->getCat($value->race)->nom)?></h3>
-        <img src="image/<?=$value->image?>" alt="">
+        <a href="../controler/Profil.crtl.php?ref=<?=$value->ref?>">
+        <img src="../view/image/<?=$value->image?>" alt="" height=50px width=50px>
+      </a>
         <p><?=$value->prix?> €</p>
       </article>
 
