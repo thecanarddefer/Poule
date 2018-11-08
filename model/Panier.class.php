@@ -40,9 +40,9 @@ function supprimerArticle($poule){
 
       for($i = 0; $i < count($_SESSION['panier']['poule']); $i++)
       {
-         if ($_SESSION['panier']['poule'][$i] !== $poule)
+         if ($_SESSION['panier']['poule'][$i][0]->ref !== $poule)
          {
-            array_push( $tmp['libelleProduit'],$_SESSION['panier']['poule'][$i]);
+            array_push( $tmp['poule'],$_SESSION['panier']['poule'][$i]);
 
          }
 
