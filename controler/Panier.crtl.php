@@ -13,9 +13,14 @@ include_once("../model/poule.class.php");
   if (creationPanier())
   {
     if(isset($_GET['ref'])){
-    $reference = $_GET['ref'];
-    $poule = $dao->getN($reference,1);
-    ajouterArticle($poule);
+      $reference = $_GET['ref'];
+      $poule = $dao->getN($reference,1);
+      ajouterArticle($poule);
+    }
+    if(isset($_GET['supp'])){
+      $reference = $_GET['supp'];
+      $poule = $dao->getN($reference,1);
+      supprimerArticle($reference);
     }
 		$nbArticles=count($_SESSION['panier']['poule']);
     for ($i=0 ;$i < $nbArticles ; $i++)
