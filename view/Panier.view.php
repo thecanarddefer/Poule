@@ -25,7 +25,7 @@
       <td><?=$poules[$i][0]->nom?></td>
       <td><?php require_once("../model/DAO.class.php"); print($dao->getCat($poules[$i][0]->race)->nom)?></td>
       <td><?=$poules[$i][0]->prix?>€</td>
-      <td><a href=\"".htmlspecialchars("panier.php?action=suppression&l=".rawurlencode($_SESSION['panier']['libelleProduit'][$i]))."\">Supprimer</a></td>
+      <td><a href="Panier.crtl.php?supp=<?=$poules[$i][0]->ref?>">Supprimer</a></td>
     </tr>
 
   <?php } ?>
