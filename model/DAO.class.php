@@ -35,7 +35,7 @@
           $req="SELECT * FROM race";
           $sth = $this->db->query($req);
           $res=$sth->fetchAll(PDO::FETCH_CLASS,'race', array('id','nom'));
-          if ($res[0]->id==NULL){
+          if ($res==NULL){
             throw new \Exception("pas dans la liste", 1);
 
           }
@@ -54,7 +54,7 @@
           $req="SELECT * FROM poule ORDER BY ref ASC LIMIT $n";
           $sth = $this->db->query($req);
           $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
-          if ($res[0]->ref==NULL){
+          if ($res==NULL){
             throw new \Exception("pas dans la liste", 1);
 
           }
@@ -73,13 +73,14 @@
           $req="SELECT * FROM poule where ref>=$ref ORDER BY ref ASC LIMIT $n";
           $sth = $this->db->query($req);
             $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
-          if ($res[0]->ref==NULL){
-            throw new \Exception("pas dans la liste", 1);
+          if ($res==NULL){
+            throw new \Exception("pas dans la listes", 1);
 
           }
           else{
-            return $res;}
+            return $res;
           }
+        }
 
 
 
@@ -90,8 +91,8 @@
           $req="SELECT * FROM poule where ref > $a->ref ORDER BY ref ASC LIMIT 1";
           $sth = $this->db->query($req);
           $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
-          if ($res[0]->ref==NULL){
-            throw new \Exception("pas dans la liste", 1);
+          if ($res==NULL){
+            throw new \Exception("pas dans la listes", 1);
 
           }
           else{
@@ -104,8 +105,8 @@
           $req="SELECT * FROM poule where ref < $ref ORDER BY  ref DESC LIMIT $n";
           $sth = $this->db->query($req);
           $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
-          if ($res[0]->ref==NULL){
-            throw new \Exception("pas dans la liste", 1);
+          if ($res==NULL){
+            throw new \Exception("pas dans la listes", 1);
           }
           else{
             $j=0;
@@ -126,14 +127,59 @@
           $req="SELECT * FROM race WHERE id=$id ";
           $sth = $this->db->query($req);
           $res=$sth->fetchAll(PDO::FETCH_CLASS,'race', array('id','nom'));
-          if ($res[0]->id==NULL){
+          if ($res==NULL){
             throw new \Exception("pas dans la liste", 1);
-
           }
           else{
             return $res[0];
           }
 
+        }
+
+
+        // Acces à une catégorie
+        // Retourne un objet de la classe Categorie connaissant son identifiant
+        function getElemRace($id) {
+          $req="SELECT * FROM poule p,(SELECT * FROM race WHERE id=$id) a WHERE a.id=p.race ";
+          $sth = $this->db->query($req);
+          $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
+          if ($res==NULL){
+            throw new \Exception("pas dans la liste", 1);
+          }
+          else{
+            return $res;
+          }
+
+        }
+
+        function getElemPonte($val) {
+          $req="SELECT * FROM poule WHERE ponte=$val ";
+          $sth = $this->db->query($req);
+          $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
+          if ($res==NULL){
+            throw new \Exception("pas dans la liste", 1);
+          }
+          else{
+            return $res;
+          }
+        }
+
+        function getElem($id,$val) {
+          if($id==0){
+            $req="SELECT * FROM poule WHERE ponte=$val ";
+          } elseif($val==0){
+            $req="SELECT * FROM poule p,(SELECT * FROM race WHERE id=$id) a WHERE a.id=p.race ";
+          } else {
+            $req="SELECT * FROM poule p,(SELECT * FROM race WHERE id=$id) a WHERE a.id=p.race and ponte=$val ";
+          }
+          $sth = $this->db->query($req);
+          $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
+          if ($res==NULL){
+            throw new \Exception("pas dans la liste", 1);
+          }
+          else{
+            return $res;
+          }
         }
 
 
@@ -145,7 +191,7 @@
           $req="SELECT * FROM poule where ref>=$ref AND $race categorie=  ORDER BY ref ASC LIMIT $n";
           $sth = $this->db->query($req);
             $res=$sth->fetchAll(PDO::FETCH_CLASS,'poule', array('ref','nom','race','prix','image','ponte','naissance'));
-          if ($res[0]->ref==NULL){
+          if ($res==NULL){
             throw new \Exception("pas dans la liste", 1);
 
           }

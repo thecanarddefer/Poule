@@ -1,0 +1,23 @@
+body {
+	font-family: "Arial";
+	width: 960px;
+	margin: auto;
+	border: 1px solid #CCC;
+	box-shadow: 10px 10px 5px #888888;
+}
+
+header {
+	font-size:large;
+	font-weight: bolder;
+	background-color: #5ebcae;
+	margin: 0px;
+}
+
+header img {
+		margin: 5px 0px 5px 0px;
+    height: 150px;
+}
+
+#panier {
+  float: right;
+}
